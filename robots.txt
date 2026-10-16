@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pwzbase.github.io/otica-privilegio/sitemap.xml
