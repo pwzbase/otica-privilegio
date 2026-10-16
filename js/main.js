@@ -101,6 +101,85 @@
     visor.style.setProperty("--cy", "50%");
   });
 
+  // ---------- Unidades ----------
+  const dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  const hm = (t) => t.replace(":00", "h").replace(":", "h");
+  const agoraBR = () => {
+    const p = Object.fromEntries(
+      new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+        .formatToParts(new Date()).map((x) => [x.type, x.value])
+    );
+    return { dia: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(p.weekday), min: Number(p.hour) * 60 + Number(p.minute) };
+  };
+  const minutos = (t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+  const status = (u) => {
+    const { dia, min } = agoraBR();
+    const hoje = u.horarios[dia];
+    if (hoje) {
+      const [ab, fe] = hoje.split("-");
+      if (min >= minutos(ab) && min < minutos(fe)) return { aberto: true, texto: `Aberto agora · fecha às ${hm(fe)}` };
+      if (min < minutos(ab)) return { aberto: false, texto: `Fechado agora · abre hoje às ${hm(ab)}` };
+    }
+    for (let i = 1; i <= 7; i++) {
+      const d = (dia + i) % 7;
+      if (u.horarios[d]) {
+        const quando = i === 1 ? "amanhã" : dias[d].toLowerCase();
+        return { aberto: false, texto: `Fechado agora · abre ${quando} às ${hm(u.horarios[d].split("-")[0])}` };
+      }
+    }
+    return { aberto: false, texto: "Fechado" };
+  };
+
+  const abas = document.querySelector("[data-unidades-abas]");
+  const painel = document.querySelector("[data-unidade]");
+  const mapa = document.querySelector("[data-mapa]");
+  const mostrarUnidade = (u) => {
+    const s = status(u);
+    const el = painel.querySelector("[data-status]");
+    el.textContent = s.texto;
+    el.classList.toggle("aberto", s.aberto);
+    painel.querySelector("[data-endereco]").innerHTML = `${u.endereco}<br>${u.cidade}, RS`;
+    const ref = painel.querySelector("[data-referencia]");
+    ref.textContent = u.referencia;
+    ref.hidden = !u.referencia;
+    const hoje = agoraBR().dia;
+    painel.querySelector("[data-horarios]").innerHTML = [1, 2, 3, 4, 5, 6, 0]
+      .map((d) => {
+        const h = u.horarios[d];
+        return `<tr${d === hoje ? ' class="hoje"' : ""}><th scope="row">${dias[d]}</th><td>${h ? h.split("-").map(hm).join(" às ") : "Fechado"}</td></tr>`;
+      })
+      .join("");
+    const rota = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(u.mapa)}`;
+    const wa = u.whatsapp
+      ? `<a class="botao botao--linha" href="https://wa.me/${u.whatsapp}?text=${encodeURIComponent(`Olá! Quero agendar uma visita na unidade ${u.cidade}.`)}" target="_blank" rel="noopener">Agendar visita</a>`
+      : "";
+    const tel = u.telefone && !u.whatsapp
+      ? `<a class="botao botao--linha" href="tel:+55${u.telefone.replace(/\D/g, "")}">Ligar ${u.telefone}</a>`
+      : "";
+    const insta = u.instagram
+      ? `<a class="botao botao--linha" href="${u.instagram}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg><span>Instagram</span></a>`
+      : "";
+    painel.querySelector("[data-acoes]").innerHTML =
+      `<a class="botao botao--escuro" href="${rota}" target="_blank" rel="noopener">Como chegar</a>${wa}${tel}${insta}`;
+    mapa.src = `https://www.google.com/maps?q=${encodeURIComponent(u.mapa)}&output=embed`;
+    mapa.title = `Mapa da unidade ${u.cidade}`;
+  };
+  abas.innerHTML = cfg.unidades
+    .map((u, i) => `<button type="button" role="tab" id="aba-${u.id}" aria-selected="${i === 0}" data-id="${u.id}"><span class="ponto-status" aria-hidden="true"></span>${u.cidade}</button>`)
+    .join("");
+  const botoesAba = [...abas.querySelectorAll("[data-id]")];
+  botoesAba.forEach((b) => {
+    const u = cfg.unidades.find((x) => x.id === b.dataset.id);
+    b.classList.toggle("aberto", status(u).aberto);
+    b.addEventListener("click", () => {
+      botoesAba.forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+      painel.setAttribute("aria-labelledby", b.id);
+      mostrarUnidade(u);
+    });
+  });
+  painel.setAttribute("aria-labelledby", botoesAba[0].id);
+  mostrarUnidade(cfg.unidades[0]);
+
   // ---------- Galeria da loja ----------
   const trilho = document.querySelector("[data-trilho]");
   document.querySelectorAll("[data-galeria]").forEach((b) =>

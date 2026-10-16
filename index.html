@@ -31,7 +31,12 @@
     "name": "Ótica Privilégio",
     "slogan": "O detalhe que te valoriza",
     "image": "https://pwzbase.github.io/otica-privilegio/assets/img/og.jpg",
-    "telephone": "+55-54-3221-2613",
+    "telephone": "+55-54-99996-6842",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "128" },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Rua Sinimbu, 1670, Loja 103",
@@ -73,7 +78,7 @@
         <li><a href="#circulo">Círculo</a></li>
         <li><a href="#loja">A loja</a></li>
         <li><a href="#duvidas">Dúvidas</a></li>
-        <li><a href="#visite">Visite</a></li>
+        <li><a href="#visite">Unidades</a></li>
       </ul>
     </nav>
     <div class="topo__acoes">
@@ -94,7 +99,7 @@
     <a href="#circulo">Círculo</a>
     <a href="#loja">A loja</a>
     <a href="#duvidas">Dúvidas</a>
-    <a href="#visite">Visite a loja</a>
+    <a href="#visite">Unidades</a>
     <a class="botao botao--whats" data-wa href="https://wa.me/5554999966842" target="_blank" rel="noopener">
       <svg aria-hidden="true"><use href="#i-whats"/></svg><span>Falar com consultor</span>
     </a>
@@ -118,7 +123,7 @@
           </a>
           <a class="botao botao--linha" href="#colecao">Ver a coleção</a>
         </div>
-        <p class="hero__prova"><strong>+2.000</strong> histórias transformadas</p>
+        <p class="hero__prova"><strong>+2.000</strong> histórias transformadas <span class="hero__nota"><strong>5,0</strong> no Google, 128 avaliações</span></p>
       </div>
       <figure class="hero__foto">
         <img src="assets/img/loja-fachada-sol.webp" alt="Fachada laranja da Ótica Privilégio na Rua Sinimbu, em dia de sol" width="1570" height="882" fetchpriority="high">
@@ -137,14 +142,14 @@
           <li>Benefícios para clientes do Círculo</li>
           <li>Armações de grau e solar</li>
           <li>Consertos e higienização</li>
-          <li>Pátio Eberle, Rua Sinimbu</li>
+          <li>Caxias do Sul, Farroupilha e Carlos Barbosa</li>
         </ul>
         <ul aria-hidden="true">
           <li>+2.000 histórias transformadas</li>
           <li>Benefícios para clientes do Círculo</li>
           <li>Armações de grau e solar</li>
           <li>Consertos e higienização</li>
-          <li>Pátio Eberle, Rua Sinimbu</li>
+          <li>Caxias do Sul, Farroupilha e Carlos Barbosa</li>
         </ul>
       </div>
     </div>
@@ -257,6 +262,7 @@
       <div class="circulo__texto">
         <h2 id="circulo-titulo">Quem é cliente faz parte do Círculo.</h2>
         <p>O Círculo Privilégio é o nosso jeito de cuidar de quem já escolheu a gente. Depois da compra, você continua sendo atendido.</p>
+        <!-- TODO: preencher com os benefícios reais do Círculo quando a loja confirmar -->
         <ul class="circulo__lista">
           <li>Benefícios exclusivos para clientes do Círculo</li>
           <li>Consertos, higienização e ajuste dos seus óculos na loja</li>
@@ -293,6 +299,14 @@
           <p>Depende do tipo de lente e do grau. Informamos o prazo exato na hora do pedido.</p>
         </details>
         <details>
+          <summary>Quais as formas de pagamento?</summary>
+          <p>Aceitamos as formas tradicionais: dinheiro, Pix e cartões de débito e crédito. Pergunte pelo WhatsApp as condições do momento.</p>
+        </details>
+        <details>
+          <summary>Qual o horário das lojas?</summary>
+          <p>De segunda a sexta, a partir das 8h30 ou 9h, dependendo da unidade. Aos sábados, pela manhã. Veja o horário de cada unidade logo abaixo.</p>
+        </details>
+        <details>
           <summary>Vocês ajustam e limpam óculos?</summary>
           <p>Sim. Passe na loja para higienizar e ajustar seus óculos. Clientes do Círculo têm esse cuidado sempre que precisarem.</p>
         </details>
@@ -321,28 +335,25 @@
       </ul>
     </section>
 
-    <!-- VISITE -->
+    <!-- UNIDADES -->
     <section class="visite secao" id="visite" aria-labelledby="visite-titulo">
       <div class="visite__texto">
         <h2 id="visite-titulo">Venha experimentar.</h2>
-        <p class="visite__ref">No Pátio Eberle, ao lado da Estação dos Brinquedos.</p>
-        <address>
-          Rua Sinimbu, 1670, loja 103<br>
-          Centro, Caxias do Sul, RS<br>
-          CEP 95020-001
-        </address>
-        <dl class="visite__contatos">
-          <div><dt>WhatsApp</dt><dd><a data-wa href="https://wa.me/5554999966842" target="_blank" rel="noopener">(54) 99996-6842</a></dd></div>
-          <div><dt>Telefone</dt><dd><a href="tel:+555432212613">(54) 3221-2613</a></dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/oticaprivilegio_caxiasdosul/" target="_blank" rel="noopener">@oticaprivilegio_caxiasdosul</a></dd></div>
-        </dl>
-        <div class="visite__acoes">
-          <a class="botao botao--escuro" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+Sinimbu+1670+Caxias+do+Sul+RS" target="_blank" rel="noopener">Como chegar</a>
-          <a class="botao botao--linha" data-wa="Olá! Quero agendar uma visita na loja." href="https://wa.me/5554999966842" target="_blank" rel="noopener">Agendar visita</a>
+        <p class="visite__ref">Três unidades na Serra Gaúcha, com o mesmo cuidado.</p>
+        <div class="unidades__abas" role="tablist" aria-label="Escolha a unidade" data-unidades-abas></div>
+        <div class="unidade" data-unidade role="tabpanel" aria-live="polite">
+          <p class="unidade__status" data-status></p>
+          <address data-endereco>Rua Sinimbu, 1670, loja 103, Centro<br>Caxias do Sul, RS</address>
+          <p class="unidade__ref" data-referencia></p>
+          <table class="unidade__horarios">
+            <caption class="sr">Horário de funcionamento</caption>
+            <tbody data-horarios></tbody>
+          </table>
+          <div class="visite__acoes" data-acoes></div>
         </div>
       </div>
       <div class="visite__mapa">
-        <iframe title="Mapa da Ótica Privilégio" src="https://www.google.com/maps?q=Rua+Sinimbu,+1670,+Caxias+do+Sul,+RS&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Mapa da unidade selecionada" data-mapa src="https://www.google.com/maps?q=%C3%93tica+Privil%C3%A9gio,+Rua+Sinimbu+1670,+Caxias+do+Sul,+RS&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
   </main>
@@ -365,8 +376,8 @@
         <div>
           <h3>Ajuda</h3>
           <a href="#duvidas">Dúvidas</a>
-          <a href="#visite">Endereço</a>
-          <a href="tel:+555432212613">Telefone</a>
+          <a href="#visite">Unidades e horários</a>
+          <a href="tel:+5554999966842">Telefone</a>
         </div>
         <div>
           <h3>Siga</h3>
@@ -376,8 +387,8 @@
     </div>
     <p class="rodape__marca" aria-hidden="true">Privilégio</p>
     <div class="rodape__base">
-      <p>© <span data-ano>2026</span> Ótica Privilégio. Caxias do Sul, RS.</p>
-      <p>Rua Sinimbu, 1670, loja 103</p>
+      <p>© <span data-ano>2026</span> Ótica Privilégio. Serra Gaúcha, RS.</p>
+      <p>Caxias do Sul, Farroupilha e Carlos Barbosa</p>
     </div>
   </footer>
 

@@ -175,6 +175,8 @@ button { font: inherit; color: inherit; }
 .hero__acoes { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero__prova { margin-top: 28px; font-size: var(--t-0); }
 .hero__prova strong { font-size: 1.25rem; font-weight: 700; margin-right: 4px; }
+.hero__nota { display: inline-block; margin-left: 18px; padding-left: 18px; border-left: 1.5px solid rgba(43, 40, 98, .4); }
+.hero__nota strong::after { content: " ★"; color: var(--indigo); }
 
 .hero__foto { margin: 0; position: relative; min-height: 100%; }
 .hero__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; }
@@ -414,6 +416,21 @@ button { font: inherit; color: inherit; }
 .visite h2 { font-size: var(--t-5); margin-bottom: 14px; }
 .visite__ref { color: var(--indigo-suave); font-size: var(--t-2); margin-bottom: 28px; }
 .visite address { font-style: normal; font-size: var(--t-3); line-height: 1.35; margin-bottom: 28px; }
+.unidades__abas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 5px; background: var(--branco); border-radius: var(--raio-m); max-width: 480px; margin-bottom: 28px; }
+.unidades__abas button { border: 0; background: none; padding: 10px 8px; border-radius: 13px; cursor: pointer; font-weight: 600; font-size: var(--t-0); line-height: 1.2; display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
+.unidades__abas button[aria-selected="true"] { background: var(--indigo); color: var(--branco); }
+.ponto-status { width: 8px; height: 8px; border-radius: 50%; background: #B9B6D3; }
+.aberto > .ponto-status { background: var(--verde-whats); }
+.unidade__status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 14px; color: var(--indigo-suave); }
+.unidade__status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #B9B6D3; }
+.unidade__status.aberto { color: #137A3F; }
+.unidade__status.aberto::before { background: var(--verde-whats); box-shadow: 0 0 0 4px rgba(31, 175, 90, .2); }
+.unidade__ref { color: var(--indigo-suave); margin: -16px 0 24px; }
+.unidade__horarios { border-collapse: collapse; width: 100%; max-width: 380px; margin-bottom: 32px; }
+.unidade__horarios th, .unidade__horarios td { text-align: left; padding: 9px 0; border-bottom: 1px solid rgba(43, 40, 98, .18); font-weight: 400; }
+.unidade__horarios td { text-align: right; font-variant-numeric: tabular-nums; }
+.unidade__horarios tr.hoje th, .unidade__horarios tr.hoje td { font-weight: 700; }
+.unidade__horarios tr.hoje th::after { content: "hoje"; margin-left: 8px; font-size: .75rem; font-weight: 600; background: var(--laranja); border-radius: 999px; padding: 2px 8px; }
 .visite__contatos { margin: 0 0 32px; display: grid; gap: 12px; }
 .visite__contatos div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; }
 .visite__contatos dt { color: var(--indigo-suave); }
@@ -488,6 +505,7 @@ button { font: inherit; color: inherit; }
   .ponto__rotulo em { display: none; }
   .rodape__links { flex-wrap: wrap; gap: 32px; }
   .loja__setas { display: none; }
+  .hero__nota { display: block; margin: 8px 0 0; padding: 0; border: 0; }
   .loja__foto { height: 380px; }
   .loja__foto--larga { aspect-ratio: 5 / 4; }
   .whats-flutuante { right: 16px; bottom: 16px; }

@@ -15,6 +15,8 @@ python3 -m http.server 5173
 | --- | --- |
 | Número do WhatsApp, mensagem padrão, Instagram | `js/config.js` |
 | Produtos da seção "Coleção" (nome, detalhe, categoria, foto) | `js/config.js` → `produtos` |
+| Unidades: endereço, horários, telefone, Instagram, mapa | `js/config.js` → `unidades` |
+| Benefícios do Círculo (procure o `TODO`) | `index.html` |
 | Textos, seções, endereço, FAQ | `index.html` |
 | Cores e fontes da marca | `css/style.css` → `:root` |
 | Fotos | `assets/img/` (WebP, até ~1600px de largura) |
