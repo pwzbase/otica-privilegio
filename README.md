@@ -25,6 +25,10 @@ python3 -m http.server 5173
 
 Todo link com o atributo `data-wa="mensagem"` abre o WhatsApp da loja já com a mensagem escrita. Cada produto gera a mensagem com o nome do modelo.
 
+## Fontes
+
+Hospedadas no próprio site em `assets/fonts/` (licença SIL Open Font License).
+
 ## Identidade
 
 - Laranja Privilégio `#F5821F` e índigo `#2B2862` (cores do logo)
@@ -39,4 +43,4 @@ As fotos em `assets/img/` são da própria loja, recortadas dos posts e stories 
 - `marca-*`: grifes (Carmim, Guess)
 - `masc-*`: fotos masculinas
 
-Para trocar uma foto, substitua o arquivo mantendo o mesmo nome. Fotos originais em alta resolução deixam o site mais nítido do que os prints.
+Cada foto tem versões menores (`-480`, `-800`, `-1100`) que o celular usa para carregar mais rápido. Para trocar uma foto, substitua o arquivo principal mantendo o mesmo nome e gere as versões menores de novo (ou apague-as e remova o `srcset` da imagem no `index.html`). Fotos originais em alta resolução deixam o site mais nítido do que os prints.

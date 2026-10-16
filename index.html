@@ -18,9 +18,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&family=Lobster+Two:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/lobster-two-700i-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="assets/img/loja-fachada-sol.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 
@@ -84,7 +83,7 @@
     <div class="topo__acoes">
       <a class="botao botao--whats" data-wa href="https://wa.me/5554999966842" target="_blank" rel="noopener">
         <svg aria-hidden="true"><use href="#i-whats"/></svg>
-        <span>Falar com consultor</span>
+        <span class="topo__whats-texto">Falar com consultor</span>
       </a>
       <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-movel" data-menu-botao>
         <span class="sr">Abrir menu</span><i></i><i></i>
@@ -162,19 +161,19 @@
       </div>
       <div class="estilos__grade">
         <a class="estilo estilo--a" data-wa="Olá! Quero ver armações femininas." href="https://wa.me/5554999966842" target="_blank" rel="noopener">
-          <img src="assets/img/marca-carmim.webp" alt="Armação gatinho preta da Carmim sobre o estojo vermelho" loading="lazy" width="1176" height="1477">
+          <img src="assets/img/marca-carmim.webp" srcset="assets/img/marca-carmim-480.webp 480w, assets/img/marca-carmim-800.webp 800w, assets/img/marca-carmim.webp 1176w" sizes="(max-width: 900px) 50vw, 25vw" alt="Armação gatinho preta da Carmim sobre o estojo vermelho" loading="lazy" width="1176" height="1477">
           <span class="estilo__nome">Feminino</span>
         </a>
         <a class="estilo estilo--b" data-wa="Olá! Quero ver armações masculinas." href="https://wa.me/5554999966842" target="_blank" rel="noopener">
-          <img src="assets/img/masc-jaqueta.webp" alt="Homem de jaqueta jeans ajustando óculos de sol" loading="lazy" width="662" height="1161">
+          <img src="assets/img/masc-jaqueta.webp" srcset="assets/img/masc-jaqueta-480.webp 480w, assets/img/masc-jaqueta.webp 662w" sizes="(max-width: 900px) 50vw, 25vw" alt="Homem de jaqueta jeans ajustando óculos de sol" loading="lazy" width="662" height="1161">
           <span class="estilo__nome">Masculino</span>
         </a>
         <a class="estilo estilo--c" data-wa="Olá! Quero ver óculos de sol." href="https://wa.me/5554999966842" target="_blank" rel="noopener">
-          <img src="assets/img/masc-laranja.webp" alt="Homem de camiseta laranja com óculos de sol espelhados" loading="lazy" width="655" height="1235">
+          <img src="assets/img/masc-laranja.webp" srcset="assets/img/masc-laranja-480.webp 480w, assets/img/masc-laranja.webp 655w" sizes="(max-width: 900px) 50vw, 25vw" alt="Homem de camiseta laranja com óculos de sol espelhados" loading="lazy" width="655" height="1235">
           <span class="estilo__nome">Solar</span>
         </a>
         <a class="estilo estilo--d" data-wa="Olá! Quero ver as armações de grife, como Guess e Carmim." href="https://wa.me/5554999966842" target="_blank" rel="noopener">
-          <img src="assets/img/marca-guess.webp" alt="Armações Guess expostas na vitrine da loja" loading="lazy" width="882" height="1470">
+          <img src="assets/img/marca-guess.webp" srcset="assets/img/marca-guess-480.webp 480w, assets/img/marca-guess.webp 882w" sizes="(max-width: 900px) 50vw, 25vw" alt="Armações Guess expostas na vitrine da loja" loading="lazy" width="882" height="1470">
           <span class="estilo__nome">Grifes</span>
         </a>
       </div>
@@ -193,6 +192,36 @@
       </div>
       <ul class="produtos" data-produtos aria-live="polite"></ul>
       <p class="colecao__rodape">Temos muito mais na loja. <a data-wa="Olá! Quero ver mais modelos de armação." href="https://wa.me/5554999966842" target="_blank" rel="noopener">Peça fotos de outros modelos pelo WhatsApp</a>.</p>
+    </section>
+
+    <!-- DETALHES -->
+    <section class="detalhes secao" aria-labelledby="detalhes-titulo">
+      <figure class="detalhes__foto">
+        <img src="assets/img/arm-titanium.webp" srcset="assets/img/arm-titanium-480.webp 480w, assets/img/arm-titanium.webp 882w" sizes="(max-width: 900px) 92vw, 48vw" alt="Armação de titânio dourada com hastes tartaruga e plaquetas transparentes" loading="lazy" width="882" height="1191">
+        <span class="detalhes__ponto" style="--x:81%;--y:31%" data-ponto="1" aria-hidden="true">1</span>
+        <span class="detalhes__ponto" style="--x:36%;--y:33%" data-ponto="2" aria-hidden="true">2</span>
+        <span class="detalhes__ponto" style="--x:57%;--y:51%" data-ponto="3" aria-hidden="true">3</span>
+      </figure>
+      <div class="detalhes__texto">
+        <h2 id="detalhes-titulo">O detalhe faz a diferença.</h2>
+        <ol class="detalhes__lista" data-detalhes>
+          <li data-ponto="1">
+            <h3>Titânio</h3>
+            <p>Metal leve, flexível e mais resistente à oxidação.</p>
+          </li>
+          <li data-ponto="2">
+            <h3>Hastes tartaruga</h3>
+            <p>Acetato com o desenho clássico que combina com tudo.</p>
+          </li>
+          <li data-ponto="3">
+            <h3>Plaquetas ajustadas no seu rosto</h3>
+            <p>A gente regula na loja para o óculos não pesar nem escorregar.</p>
+          </li>
+        </ol>
+        <a class="botao botao--escuro" data-wa="Olá! Quero saber mais sobre a armação Titanium que vi no site." href="https://wa.me/5554999966842" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-whats"/></svg><span>Quero ver essa armação</span>
+        </a>
+      </div>
     </section>
 
     <!-- LENTES -->
@@ -222,9 +251,9 @@
         </a>
       </div>
       <div class="lentes__visor" data-visor data-efeito="simples">
-        <img src="assets/img/visor-rua.webp" alt="Rua Sinimbu ensolarada vista através da lente selecionada" loading="lazy" width="882" height="882">
+        <img src="assets/img/visor-rua.webp" srcset="assets/img/visor-rua-480.webp 480w, assets/img/visor-rua.webp 882w" sizes="(max-width: 900px) 90vw, 50vw" alt="Rua Sinimbu ensolarada vista através da lente selecionada" loading="lazy" width="882" height="882">
         <div class="lentes__circulo" aria-hidden="true">
-          <img src="assets/img/visor-rua.webp" alt="" loading="lazy" width="882" height="882">
+          <img src="assets/img/visor-rua.webp" srcset="assets/img/visor-rua-480.webp 480w, assets/img/visor-rua.webp 882w" sizes="(max-width: 900px) 90vw, 50vw" alt="" loading="lazy" width="882" height="882">
         </div>
         <p class="lentes__legenda" data-legenda>Sem lente</p>
       </div>
@@ -233,7 +262,7 @@
     <!-- COMO FUNCIONA -->
     <section class="passos secao" aria-labelledby="passos-titulo">
       <figure class="passos__foto">
-        <img src="assets/img/loja-parede-flores.webp" alt="Parede de armações iluminada dentro da loja, com flores laranja" loading="lazy" width="882" height="1470">
+        <img src="assets/img/loja-parede-flores.webp" srcset="assets/img/loja-parede-flores-480.webp 480w, assets/img/loja-parede-flores.webp 882w" sizes="(max-width: 900px) 92vw, 45vw" alt="Parede de armações iluminada dentro da loja, com flores laranja" loading="lazy" width="882" height="1470">
       </figure>
       <div class="passos__texto">
         <h2 id="passos-titulo">Do primeiro oi ao óculos no rosto.</h2>
@@ -257,7 +286,7 @@
     <!-- CÍRCULO -->
     <section class="circulo secao" id="circulo" aria-labelledby="circulo-titulo">
       <figure class="circulo__foto">
-        <img src="assets/img/arm-sacola.webp" alt="Óculos pronto em frente à sacola azul da Ótica Privilégio" loading="lazy" width="882" height="1264">
+        <img src="assets/img/arm-sacola.webp" srcset="assets/img/arm-sacola-480.webp 480w, assets/img/arm-sacola.webp 882w" sizes="(max-width: 900px) 92vw, 45vw" alt="Óculos pronto em frente à sacola azul da Ótica Privilégio" loading="lazy" width="882" height="1264">
       </figure>
       <div class="circulo__texto">
         <h2 id="circulo-titulo">Quem é cliente faz parte do Círculo.</h2>
@@ -326,12 +355,12 @@
         </div>
       </div>
       <ul class="loja__trilho" data-trilho tabindex="0" aria-label="Fotos da loja">
-        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-fachada.webp" alt="Fachada laranja da Ótica Privilégio, loja 103" loading="lazy" width="1570" height="1477"><span>A fachada, loja 103</span></li>
-        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-vitrine-mesa.webp" alt="Armações Guess e de acetato tartaruga expostas sobre a mesa" loading="lazy" width="1570" height="795"><span>Vitrine de outono</span></li>
-        <li class="loja__foto"><img src="assets/img/loja-parede-rosa.webp" alt="Parede de armações de metal com uma rosa vermelha em primeiro plano" loading="lazy" width="1088" height="1477"><span>Cada armação, um detalhe</span></li>
-        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-expositor.webp" alt="Expositor com armações de grau HB e de metal" loading="lazy" width="1570" height="795"><span>Grau para todos os rostos</span></li>
-        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-vitrine-janela.webp" alt="Armações coloridas sobre estojos na vitrine da rua" loading="lazy" width="1483" height="810"><span>Novidades na vitrine</span></li>
-        <li class="loja__foto"><img src="assets/img/loja-bandeira.webp" alt="Bandeira laranja da Privilégio na entrada do Pátio Eberle" loading="lazy" width="882" height="1470"><span>Entrada pelo Pátio Eberle</span></li>
+        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-fachada.webp" srcset="assets/img/loja-fachada-480.webp 480w, assets/img/loja-fachada-800.webp 800w, assets/img/loja-fachada-1100.webp 1100w, assets/img/loja-fachada.webp 1570w" sizes="(max-width: 600px) 95vw, 50vw" alt="Fachada laranja da Ótica Privilégio, loja 103" loading="lazy" width="1570" height="1477"><span>A fachada, loja 103</span></li>
+        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-vitrine-mesa.webp" srcset="assets/img/loja-vitrine-mesa-480.webp 480w, assets/img/loja-vitrine-mesa-800.webp 800w, assets/img/loja-vitrine-mesa-1100.webp 1100w, assets/img/loja-vitrine-mesa.webp 1570w" sizes="(max-width: 600px) 95vw, 50vw" alt="Armações Guess e de acetato tartaruga expostas sobre a mesa" loading="lazy" width="1570" height="795"><span>Vitrine de outono</span></li>
+        <li class="loja__foto"><img src="assets/img/loja-parede-rosa.webp" srcset="assets/img/loja-parede-rosa-480.webp 480w, assets/img/loja-parede-rosa-800.webp 800w, assets/img/loja-parede-rosa.webp 1088w" sizes="(max-width: 600px) 72vw, 32vw" alt="Parede de armações de metal com uma rosa vermelha em primeiro plano" loading="lazy" width="1088" height="1477"><span>Cada armação, um detalhe</span></li>
+        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-expositor.webp" srcset="assets/img/loja-expositor-480.webp 480w, assets/img/loja-expositor-800.webp 800w, assets/img/loja-expositor-1100.webp 1100w, assets/img/loja-expositor.webp 1570w" sizes="(max-width: 600px) 95vw, 50vw" alt="Expositor com armações de grau HB e de metal" loading="lazy" width="1570" height="795"><span>Grau para todos os rostos</span></li>
+        <li class="loja__foto loja__foto--larga"><img src="assets/img/loja-vitrine-janela.webp" srcset="assets/img/loja-vitrine-janela-480.webp 480w, assets/img/loja-vitrine-janela-800.webp 800w, assets/img/loja-vitrine-janela-1100.webp 1100w, assets/img/loja-vitrine-janela.webp 1483w" sizes="(max-width: 600px) 95vw, 50vw" alt="Armações coloridas sobre estojos na vitrine da rua" loading="lazy" width="1483" height="810"><span>Novidades na vitrine</span></li>
+        <li class="loja__foto"><img src="assets/img/loja-bandeira.webp" srcset="assets/img/loja-bandeira-480.webp 480w, assets/img/loja-bandeira.webp 882w" sizes="(max-width: 600px) 72vw, 32vw" alt="Bandeira laranja da Privilégio na entrada do Pátio Eberle" loading="lazy" width="882" height="1470"><span>Entrada pelo Pátio Eberle</span></li>
       </ul>
     </section>
 

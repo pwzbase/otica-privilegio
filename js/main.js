@@ -18,7 +18,7 @@
     .map((p) => `
       <li class="produto" data-categoria="${p.categoria}">
         <a data-wa="Olá! Vi no site o modelo ${p.nome} (${p.detalhe}). Ainda tem disponível?" target="_blank" rel="noopener">
-          <div class="produto__img"><img src="${p.imagem}" alt="Armação ${p.nome}: ${p.detalhe}" loading="lazy" width="882" height="1200"></div>
+          <div class="produto__img"><img src="${p.imagem}" srcset="${p.imagem.replace(".webp", "-480.webp")} 480w, ${p.imagem} 882w" sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw" alt="Armação ${p.nome}: ${p.detalhe}" loading="lazy" width="882" height="1200"></div>
           <div class="produto__info">
             <h3 class="produto__nome">${p.nome}</h3>
             <span class="produto__tipo">${nomesCategoria[p.categoria] || p.categoria}</span>
@@ -180,6 +180,22 @@
   });
   painel.setAttribute("aria-labelledby", botoesAba[0].id);
   mostrarUnidade(cfg.unidades[0]);
+
+  // ---------- Detalhes: liga item da lista ao ponto na foto ----------
+  const pontos = [...document.querySelectorAll(".detalhes__ponto")];
+  const itens = [...document.querySelectorAll("[data-detalhes] li")];
+  const destacar = (n) => [...pontos, ...itens].forEach((el) => el.classList.toggle("ativo", el.dataset.ponto === n));
+  itens.forEach((li) => {
+    li.addEventListener("pointerenter", () => destacar(li.dataset.ponto));
+    li.addEventListener("pointerleave", () => destacar(null));
+  });
+  if (itens.length && "IntersectionObserver" in window && matchMedia("(hover: none)").matches) {
+    const obsDetalhe = new IntersectionObserver(
+      (ents) => ents.forEach((en) => en.isIntersecting && destacar(en.target.dataset.ponto)),
+      { rootMargin: "-45% 0px -45% 0px" }
+    );
+    itens.forEach((li) => obsDetalhe.observe(li));
+  }
 
   // ---------- Escolha da unidade antes do WhatsApp ----------
   const escolha = document.querySelector("[data-escolha]");

@@ -3,6 +3,15 @@
    Cores e fontes da marca ficam em :root
    ========================================================== */
 
+@font-face {
+  font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 300 700; font-display: swap;
+  src: url("../assets/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lobster Two"; font-style: italic; font-weight: 700; font-display: swap;
+  src: url("../assets/fonts/lobster-two-700i-latin.woff2") format("woff2");
+}
+
 :root {
   --laranja: #F5821F;
   --laranja-vivo: #FF9A3C;
@@ -273,6 +282,33 @@ button { font: inherit; color: inherit; }
 .colecao__rodape { margin-top: 36px; font-size: var(--t-2); }
 .colecao__rodape a { font-weight: 600; text-decoration-color: var(--laranja); text-decoration-thickness: 2px; text-underline-offset: 5px; }
 
+/* ---------- Detalhes ---------- */
+.detalhes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.detalhes > * { max-width: none; margin: 0; min-width: 0; }
+.detalhes__foto { position: relative; margin: 0; border-radius: var(--raio-g); overflow: hidden; aspect-ratio: 882 / 1191; }
+.detalhes__foto img { width: 100%; height: 100%; object-fit: cover; }
+.detalhes__ponto {
+  position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%);
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--laranja); color: var(--indigo-profundo); font-weight: 700;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .9), 0 8px 20px -6px rgba(28, 25, 69, .5);
+  transition: transform .25s, background-color .25s, color .25s;
+}
+.detalhes__ponto.ativo { transform: translate(-50%, -50%) scale(1.25); background: var(--indigo); color: var(--branco); }
+.detalhes h2 { font-size: var(--t-5); max-width: 12ch; margin-bottom: 36px; }
+.detalhes__lista { counter-reset: d; margin-bottom: 36px; }
+.detalhes__lista li {
+  counter-increment: d; display: grid; grid-template-columns: 52px 1fr; gap: 4px 20px;
+  padding: 22px 0; border-top: var(--borda); cursor: default;
+}
+.detalhes__lista li::before {
+  content: counter(d); grid-row: span 2; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--laranja); display: grid; place-items: center; font-weight: 700; transition: background-color .25s, color .25s;
+}
+.detalhes__lista li.ativo::before { background: var(--indigo); color: var(--branco); }
+.detalhes__lista h3 { font-size: var(--t-3); }
+.detalhes__lista p { color: var(--indigo-suave); max-width: 44ch; }
+
 /* ---------- Lentes ---------- */
 .lentes {
   background: var(--indigo); color: var(--branco);
@@ -423,7 +459,7 @@ button { font: inherit; color: inherit; }
 .aberto > .ponto-status { background: var(--verde-whats); }
 .unidade__status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 14px; color: var(--indigo-suave); }
 .unidade__status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #B9B6D3; }
-.unidade__status.aberto { color: #137A3F; }
+.unidade__status.aberto { color: #0B5C2E; }
 .unidade__status.aberto::before { background: var(--verde-whats); box-shadow: 0 0 0 4px rgba(31, 175, 90, .2); }
 .unidade__ref { color: var(--indigo-suave); margin: -16px 0 24px; }
 .unidade__horarios { border-collapse: collapse; width: 100%; max-width: 380px; margin-bottom: 32px; }
@@ -446,7 +482,7 @@ button { font: inherit; color: inherit; }
 .rodape__topo { display: flex; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
 .rodape__frase { font-size: var(--t-4); max-width: 14ch; line-height: 1.05; letter-spacing: -.025em; margin-bottom: 28px; }
 .rodape__links { display: flex; gap: clamp(32px, 6vw, 96px); }
-.rodape__links h3 { font-size: var(--t-0); font-weight: 600; color: var(--indigo-profundo); opacity: .7; margin-bottom: 14px; }
+.rodape__links h3 { font-size: var(--t-0); font-weight: 600; color: var(--indigo-profundo); margin-bottom: 14px; }
 .rodape__links a { display: block; font-size: var(--t-2); padding: 5px 0; text-decoration: none; }
 .rodape__links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .rodape__marca {
@@ -483,7 +519,7 @@ button { font: inherit; color: inherit; }
 .escolha__opcao.ultima { border-color: var(--laranja); background: var(--laranja-fundo); }
 .escolha__cidade { font-weight: 600; font-size: var(--t-2); }
 .escolha__status { grid-column: 1; font-size: var(--t-0); color: var(--indigo-suave); }
-.escolha__status.aberto { color: #137A3F; }
+.escolha__status.aberto { color: #0B5C2E; }
 .escolha__opcao svg { grid-column: 2; grid-row: 1 / span 2; width: 28px; height: 28px; color: var(--verde-whats); }
 
 /* ---------- WhatsApp flutuante ---------- */
@@ -511,7 +547,8 @@ button { font: inherit; color: inherit; }
   .hero__foto::after { content: ""; position: absolute; inset: auto 0 0 0; height: 45%; background: linear-gradient(to bottom, rgba(245, 130, 31, 0), var(--laranja) 92%); pointer-events: none; }
   .hero__painel { padding-top: 0; margin-top: clamp(-150px, -22vw, -90px); }
   .hero__marca span { font-size: clamp(4.5rem, 24vw, 10rem); }
-  .lentes, .passos, .circulo, .duvidas, .visite { grid-template-columns: 1fr; }
+  .lentes, .passos, .circulo, .duvidas, .visite, .detalhes { grid-template-columns: 1fr; }
+  .detalhes__foto { max-width: 520px; }
   .lentes__visor { max-width: 560px; width: 100%; margin: 0 auto; }
   .circulo__foto { max-width: 480px; }
   .produtos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -522,7 +559,7 @@ button { font: inherit; color: inherit; }
 }
 @media (max-width: 600px) {
   .topo { padding-top: 12px; }
-  .topo__acoes .botao--whats span { display: none; }
+  .topo__whats-texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .topo__acoes .botao--whats { width: 46px; padding: 0; }
   .nav { padding-left: 16px; }
   .produtos { grid-template-columns: 1fr; }
