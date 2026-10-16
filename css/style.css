@@ -177,7 +177,7 @@ button { font: inherit; color: inherit; }
 .hero__prova strong { font-size: 1.25rem; font-weight: 700; margin-right: 4px; }
 
 .hero__foto { margin: 0; position: relative; min-height: 100%; }
-.hero__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.hero__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; }
 
 /* Ponto clicável sobre a foto */
 .ponto {
@@ -199,6 +199,7 @@ button { font: inherit; color: inherit; }
   box-shadow: 0 10px 30px -14px rgba(28, 25, 69, .6);
 }
 .ponto__rotulo em { font-style: normal; color: var(--indigo-suave); font-weight: 500; margin-left: 6px; }
+.ponto--esquerda { flex-direction: row-reverse; transform: translate(calc(-100% + 22px), -22px); }
 .ponto:hover .ponto__rotulo { background: var(--indigo); color: var(--branco); }
 .ponto:hover .ponto__rotulo em { color: var(--laranja); }
 
@@ -254,7 +255,7 @@ button { font: inherit; color: inherit; }
   transition: border-color .2s;
 }
 .produto a:hover { border-color: var(--indigo); }
-.produto__img { border-radius: var(--raio-m); overflow: hidden; aspect-ratio: 4 / 3; background: #F6F6F6; }
+.produto__img { border-radius: var(--raio-m); overflow: hidden; aspect-ratio: 4 / 5; background: var(--nevoa); }
 .produto__img img { width: 100%; height: 100%; object-fit: cover; }
 .produto__info { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 4px 12px; padding: 16px 10px 0; }
 .produto__nome { font-size: var(--t-3); font-weight: 500; letter-spacing: -.02em; }
@@ -380,10 +381,38 @@ button { font: inherit; color: inherit; }
 .duvidas__lista details[open] summary::after { transform: rotate(45deg); background: var(--laranja); }
 .duvidas__lista details p { padding: 0 64px 28px 0; font-size: var(--t-2); color: var(--indigo-suave); max-width: 60ch; }
 
+/* ---------- A loja (galeria) ---------- */
+.loja { padding-right: 0; padding-left: 0; }
+.loja__cabeca { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 0 var(--gutter); margin-bottom: 40px; }
+.loja__cabeca h2 { font-size: var(--t-5); max-width: 12ch; }
+.loja__cabeca p { font-size: var(--t-2); color: var(--indigo-suave); max-width: 46ch; margin-top: 18px; }
+.loja__setas { display: flex; gap: 10px; flex: none; }
+.loja__setas button {
+  width: 56px; height: 56px; border-radius: 50%; border: var(--borda); background: transparent;
+  font-size: 1.4rem; cursor: pointer; transition: background-color .2s, color .2s;
+}
+.loja__setas button:hover { background: var(--indigo); color: var(--branco); }
+.loja__trilho {
+  max-width: none;
+  display: flex; gap: clamp(12px, 2vw, 24px);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 0 var(--gutter) 8px; scroll-padding: 0 var(--gutter);
+  scrollbar-width: none;
+}
+.loja__trilho::-webkit-scrollbar { display: none; }
+.loja__foto { position: relative; flex: none; height: clamp(320px, 52vw, 560px); aspect-ratio: 3 / 4; border-radius: var(--raio-g); overflow: hidden; scroll-snap-align: start; }
+.loja__foto--larga { aspect-ratio: 4 / 3; }
+.loja__foto img { width: 100%; height: 100%; object-fit: cover; }
+.loja__foto span {
+  position: absolute; left: 14px; bottom: 14px;
+  background: var(--branco); border-radius: 999px; padding: 8px 16px; font-size: var(--t-0); font-weight: 600;
+}
+
 /* ---------- Visite ---------- */
 .visite { background: var(--lilas); display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(32px, 5vw, 72px); align-items: stretch; }
 .visite > * { max-width: none; margin: 0; }
-.visite h2 { font-size: var(--t-5); margin-bottom: 28px; }
+.visite h2 { font-size: var(--t-5); margin-bottom: 14px; }
+.visite__ref { color: var(--indigo-suave); font-size: var(--t-2); margin-bottom: 28px; }
 .visite address { font-style: normal; font-size: var(--t-3); line-height: 1.35; margin-bottom: 28px; }
 .visite__contatos { margin: 0 0 32px; display: grid; gap: 12px; }
 .visite__contatos div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; }
@@ -437,7 +466,6 @@ button { font: inherit; color: inherit; }
   .hero__foto::after { content: ""; position: absolute; inset: auto 0 0 0; height: 45%; background: linear-gradient(to bottom, rgba(245, 130, 31, 0), var(--laranja) 92%); pointer-events: none; }
   .hero__painel { padding-top: 0; margin-top: clamp(-150px, -22vw, -90px); }
   .hero__marca span { font-size: clamp(4.5rem, 24vw, 10rem); }
-  .ponto { --x: 52% !important; --y: 30% !important; }
   .lentes, .passos, .circulo, .duvidas, .visite { grid-template-columns: 1fr; }
   .lentes__visor { max-width: 560px; width: 100%; margin: 0 auto; }
   .circulo__foto { max-width: 480px; }
@@ -453,11 +481,15 @@ button { font: inherit; color: inherit; }
   .topo__acoes .botao--whats { width: 46px; padding: 0; }
   .nav { padding-left: 16px; }
   .produtos { grid-template-columns: 1fr; }
+  .produto__img { aspect-ratio: 1; }
   .hero__acoes .botao { flex: 1 1 100%; }
   .duvidas__lista details p { padding-right: 0; }
   .visite__contatos div { grid-template-columns: 1fr; gap: 0; }
   .ponto__rotulo em { display: none; }
   .rodape__links { flex-wrap: wrap; gap: 32px; }
+  .loja__setas { display: none; }
+  .loja__foto { height: 380px; }
+  .loja__foto--larga { aspect-ratio: 5 / 4; }
   .whats-flutuante { right: 16px; bottom: 16px; }
 }
 

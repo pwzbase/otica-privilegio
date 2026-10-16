@@ -28,4 +28,11 @@ Todo link com o atributo `data-wa="mensagem"` abre o WhatsApp da loja já com a 
 
 ## Fotos
 
-As fotos atuais são provisórias, do [Unsplash](https://unsplash.com/license) (uso livre). Troque pelas fotos da loja mantendo os mesmos nomes de arquivo em `assets/img/`.
+As fotos em `assets/img/` são da própria loja, recortadas dos posts e stories do Instagram e tratadas (cor, contraste e nitidez). Prefixos:
+
+- `loja-*`: fachada, vitrines e interior
+- `arm-*`: armações (usadas na Coleção)
+- `marca-*`: grifes (Carmim, Guess)
+- `masc-*`: fotos masculinas
+
+Para trocar uma foto, substitua o arquivo mantendo o mesmo nome. Fotos originais em alta resolução deixam o site mais nítido do que os prints.

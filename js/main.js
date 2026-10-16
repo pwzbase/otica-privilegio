@@ -12,13 +12,13 @@
 
   // ---------- Coleção ----------
   const lista = document.querySelector("[data-produtos]");
-  const nomesCategoria = { grau: "De grau", solar: "De sol", infantil: "Infantil" };
+  const nomesCategoria = { metal: "Metal", acetato: "Acetato" };
 
   lista.innerHTML = cfg.produtos
     .map((p) => `
       <li class="produto" data-categoria="${p.categoria}">
         <a data-wa="Olá! Vi no site o modelo ${p.nome} (${p.detalhe}). Ainda tem disponível?" target="_blank" rel="noopener">
-          <div class="produto__img"><img src="${p.imagem}" alt="Óculos ${p.nome}, ${p.detalhe}" loading="lazy" width="900" height="600"></div>
+          <div class="produto__img"><img src="${p.imagem}" alt="Armação ${p.nome}: ${p.detalhe}" loading="lazy" width="882" height="1200"></div>
           <div class="produto__info">
             <h3 class="produto__nome">${p.nome}</h3>
             <span class="produto__tipo">${nomesCategoria[p.categoria] || p.categoria}</span>
@@ -100,6 +100,15 @@
     visor.style.setProperty("--cx", "50%");
     visor.style.setProperty("--cy", "50%");
   });
+
+  // ---------- Galeria da loja ----------
+  const trilho = document.querySelector("[data-trilho]");
+  document.querySelectorAll("[data-galeria]").forEach((b) =>
+    b.addEventListener("click", () => {
+      const foto = trilho.querySelector(".loja__foto");
+      trilho.scrollBy({ left: Number(b.dataset.galeria) * (foto.offsetWidth + 24), behavior: "smooth" });
+    })
+  );
 
   // ---------- Menu móvel ----------
   const menuBotao = document.querySelector("[data-menu-botao]");

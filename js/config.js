@@ -2,7 +2,7 @@
   Configuração do site — edite aqui sem mexer no resto do código.
   - whatsapp: só números, com 55 + DDD
   - produtos: cada item vira um card na seção "Coleção" e abre o WhatsApp com a mensagem pronta
-    categoria: "grau" | "solar" | "infantil"
+    categoria: "metal" | "acetato"
 */
 window.PRIVILEGIO = {
   whatsapp: "5554999966842",
@@ -10,11 +10,11 @@ window.PRIVILEGIO = {
   instagram: "https://www.instagram.com/oticaprivilegio_caxiasdosul/",
 
   produtos: [
-    { nome: "Redondo dourado", detalhe: "Metal leve, lente verde G15", categoria: "solar", imagem: "assets/img/p-redondo-dourado.webp" },
-    { nome: "Quadrado clássico", detalhe: "Acetato preto, lente polarizada", categoria: "solar", imagem: "assets/img/p-quadrado-preto.webp" },
-    { nome: "Metal fino", detalhe: "Aro redondo, ponte delicada", categoria: "grau", imagem: "assets/img/p-metal-fino.webp" },
-    { nome: "Acetato preto", detalhe: "Retangular, encaixe firme", categoria: "grau", imagem: "assets/img/p-acetato-preto.webp" },
-    { nome: "Cristal e marrom", detalhe: "Armação translúcida, lente degradê", categoria: "solar", imagem: "assets/img/p-solar-cristal.webp" },
-    { nome: "Clubmaster", detalhe: "Acetato com metal, estilo retrô", categoria: "grau", imagem: "assets/img/p-clubmaster.webp" }
+    { nome: "Modelo Amélia", detalhe: "Metal preto, aro arredondado", categoria: "metal", imagem: "assets/img/arm-amelia.webp" },
+    { nome: "Gatinho Carmim", detalhe: "Acetato preto com hastes douradas", categoria: "acetato", imagem: "assets/img/marca-carmim.webp" },
+    { nome: "Titanium", detalhe: "Leve, flexível e resistente à oxidação", categoria: "metal", imagem: "assets/img/arm-titanium.webp" },
+    { nome: "Rosé trabalhado", detalhe: "Metal rosé com hastes texturizadas", categoria: "metal", imagem: "assets/img/arm-rose-detalhe.webp" },
+    { nome: "Dourado e azul", detalhe: "Metal dourado com hastes em acetato azul", categoria: "metal", imagem: "assets/img/arm-dourada-azul.webp" },
+    { nome: "Redondo com vinho", detalhe: "Metal claro, hastes vinho, lentes Poli Blue", categoria: "metal", imagem: "assets/img/arm-sacola.webp" }
   ]
 };
