@@ -1,7 +1,7 @@
 (() => {
   const cfg = window.PRIVILEGIO;
-  const waLink = (msg) =>
-    `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(msg || cfg.mensagemPadrao)}`;
+  const waLink = (msg, numero = cfg.whatsapp) =>
+    `https://wa.me/${numero}?text=${encodeURIComponent(msg || cfg.mensagemPadrao)}`;
 
   // Todo elemento com data-wa vira link do WhatsApp com mensagem pronta
   const ligarWhats = (raiz = document) => {
@@ -61,7 +61,8 @@
     visor.dataset.efeito = chave;
     legenda.textContent = l.legenda;
     ctaTexto.textContent = `Perguntar sobre ${l.nome}`;
-    ctaLente.href = waLink(`Olá! Quero saber mais sobre ${l.nome}.`);
+    ctaLente.dataset.wa = `Olá! Quero saber mais sobre ${l.nome}.`;
+    ctaLente.href = waLink(ctaLente.dataset.wa);
   };
   const grupo = document.querySelector("[data-lentes]");
   const opcoes = [...grupo.querySelectorAll("[data-lente]")];
@@ -179,6 +180,45 @@
   });
   painel.setAttribute("aria-labelledby", botoesAba[0].id);
   mostrarUnidade(cfg.unidades[0]);
+
+  // ---------- Escolha da unidade antes do WhatsApp ----------
+  const escolha = document.querySelector("[data-escolha]");
+  const opcoesEscolha = escolha.querySelector("[data-escolha-opcoes]");
+  const lerUltima = () => { try { return localStorage.getItem("privilegio-unidade"); } catch { return null; } };
+  const salvarUltima = (id) => { try { localStorage.setItem("privilegio-unidade", id); } catch {} };
+
+  const abrirEscolha = (msg) => {
+    const ultima = lerUltima();
+    opcoesEscolha.innerHTML = cfg.unidades
+      .filter((u) => u.whatsapp)
+      .map((u) => {
+        const s = status(u);
+        return `<li><a class="escolha__opcao${u.id === ultima ? " ultima" : ""}" data-unidade-id="${u.id}" href="${waLink(msg, u.whatsapp)}" target="_blank" rel="noopener">
+          <span class="escolha__cidade">${u.cidade}</span>
+          <span class="escolha__status${s.aberto ? " aberto" : ""}">${s.texto}</span>
+          <svg aria-hidden="true"><use href="#i-whats"/></svg>
+        </a></li>`;
+      })
+      .join("");
+    escolha.showModal();
+    (opcoesEscolha.querySelector(".ultima") || opcoesEscolha.querySelector("a")).focus();
+  };
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("[data-wa]");
+    if (!link || typeof escolha.showModal !== "function") return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    abrirEscolha(link.dataset.wa);
+  });
+  opcoesEscolha.addEventListener("click", (e) => {
+    const a = e.target.closest("[data-unidade-id]");
+    if (!a) return;
+    salvarUltima(a.dataset.unidadeId);
+    escolha.close();
+  });
+  escolha.addEventListener("click", (e) => { if (e.target === escolha) escolha.close(); });
+  escolha.querySelector("[data-escolha-fechar]").addEventListener("click", () => escolha.close());
 
   // ---------- Galeria da loja ----------
   const trilho = document.querySelector("[data-trilho]");

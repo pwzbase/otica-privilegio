@@ -50,7 +50,7 @@ window.PRIVILEGIO = {
   ],
 
   produtos: [
-    { nome: "Modelo Amélia", detalhe: "Metal preto, aro arredondado", categoria: "metal", imagem: "assets/img/arm-amelia.webp" },
+    { nome: "Amélia", detalhe: "Metal preto, aro arredondado", categoria: "metal", imagem: "assets/img/arm-amelia.webp" },
     { nome: "Gatinho Carmim", detalhe: "Acetato preto com hastes douradas", categoria: "acetato", imagem: "assets/img/marca-carmim.webp" },
     { nome: "Titanium", detalhe: "Leve, flexível e resistente à oxidação", categoria: "metal", imagem: "assets/img/arm-titanium.webp" },
     { nome: "Rosé trabalhado", detalhe: "Metal rosé com hastes texturizadas", categoria: "metal", imagem: "assets/img/arm-rose-detalhe.webp" },

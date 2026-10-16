@@ -1,6 +1,8 @@
 # Ótica Privilégio — site
 
-Site da Ótica Privilégio (Caxias do Sul, RS). HTML, CSS e JavaScript puros, sem build: é só abrir o `index.html` ou publicar a pasta em qualquer hospedagem estática (GitHub Pages, Vercel, Netlify).
+Site da Ótica Privilégio (Caxias do Sul, RS). HTML, CSS e JavaScript puros, sem build: é só abrir o `index.html` ou publicar a pasta em qualquer hospedagem estática.
+
+Produção: https://otica-privilegio.vercel.app (deploy automático a cada push na branch `main`).
 
 ## Rodar localmente
 
